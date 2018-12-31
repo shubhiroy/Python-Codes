@@ -1,6 +1,7 @@
 #!bin/user/env python
 
-r""" This script sniffs the data packet flowing through the interface passed in the command shell and extracts and displays data stored in the RAW and HTTP layer of the packet. THe script shows the url and possible login credentials stored in the packet.
+r""" >>>   python packet_sniffer.py -i 'interface from which packets to be sniffed' <<<
+     This script sniffs the data packet flowing through the interface passed in the command shell and extracts and displays data stored in the RAW and HTTP layer of the packet. THe script shows the url and possible login credentials stored in the packet.
      The script imports following modules -
      - argparse :  To parse arguments passed with the script in the command shell.
      - scapy.all : To sniff the data packet flowing through the interface.
