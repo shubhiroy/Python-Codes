@@ -1,6 +1,7 @@
 #!user/bin/env
 
-r""" This script changes the current MAC address of the given interface to the new MAC address passed.
+r""" >>>   python mac_changer.py -i 'interface' -m 'new mac adress'   <<<
+     This script changes the current MAC address of the given interface to the new MAC address passed.
      It accepts two command line arguments >>>
      * -i or --interface : Interface whose MAC address to be changed.
      * -m or --mac       : MAC address to be assigned to the interface.
