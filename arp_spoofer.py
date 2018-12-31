@@ -1,6 +1,7 @@
 #!bin/user/env python
 
-r""" This script spoofs the ARP table of the target and the gateway IP. The device on which this script is runs becoms the "MAN-IN-THE-MIDDLE" device between the target and the gateway device. All the request and response packets sent between the target and the gateway passes through the host device on which code is running.
+r"""  >>>   python arp_spoofer.py -t 'target ip' -g 'gateway/spoofed ip'   <<< 
+    This script spoofs the ARP table of the target and the gateway IP. The device on which this script is runs becoms the "MAN-IN-THE-MIDDLE" device between the target and the gateway device. All the request and response packets sent between the target and the gateway passes through the host device on which code is running.
     The modules imported in this script are >>>
     - scapy : This module is used here to get the MAC address of the IP address passed by broadcasting ARP request in the entire network.
     - argparse : This module gets the arguments passed with the script in the command shell and parse the information from them.
