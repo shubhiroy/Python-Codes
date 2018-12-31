@@ -1,6 +1,7 @@
 #!user/bin/env
 
-r""" This script is used to scan a particular IP or a range of IP and print out the IPs and MAC of all the devices connected to same network in a table formatt.
+r""" >>>   python network_scanner.py -t 'target ip or ip range'   <<<
+     This script is used to scan a particular IP or a range of IP and print out the IPs and MAC of all the devices connected to same network in a table formatt.
      It imports two packages >>>
      - argparse : Its an udated version of "optparse" from python2. It gets the command line arguments and parse their values.
      - scapy : This package scans the given network for all connected IPs on the same network and their MAC.
