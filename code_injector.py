@@ -31,7 +31,7 @@ def get_cmd_args():
 
 def set_load(packet,load):
     r""" It sets the load of the packet to the load passed in the arguments. length and checksum of the packet are deleted and new length and checksum are recalculated by scapy.
-    :param packet: Data packet passed
+    :param packet: Data packet flowing through the MITM machine.
     :param load: load of Raw layer of packet
     :return: modified data packet with new load
     """
