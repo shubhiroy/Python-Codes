@@ -6,7 +6,7 @@ r""" >>>  python code_injector.py -n 'netfilter qnum'  <<<
     * -n or --qnum : Queue number of the NetFilter Queue
 
     The script imports the following packages >>>
-    * optparse       : It gets the command line arguments and parse their values. (an updated version of this package - "argparse" is included in python3).
+    * argparse       : It gets the command line arguments and parse their values. (an updated version of this package - "argparse" is included in python3).
     * re             : It finds the pattern in the given string.
     * scapy.all      : It manipulates the data packets.
     * netfilterqueue : It provides access to the packets that are stored in the queue. There are 3 types of queue - INPUT , OUTPUT and FORWARD.
@@ -42,7 +42,9 @@ def set_load(packet,load):
     return packet
 
 def process_packet(packet):
-    r""" It processes the packet passed in the argument.
+    r""" It processes the packet passed in the argument. It modifies the load of the packet passed and injects malicious code in the original code of the webpage.
+    This method call backs another method >>>
+    - set_load(packet,load) : It modifies the original load of the packet with the new load.
     :param packet: Data packet
     :return: NONE
     """
